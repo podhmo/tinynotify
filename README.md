@@ -1,0 +1,2 @@
+# tinynotify
+individual notification command
