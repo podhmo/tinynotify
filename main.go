@@ -1,15 +1,19 @@
 package main
 
 import (
+	"flag"
 	"log"
-	"os"
+	"strings"
 
 	"github.com/gen2brain/beeep"
 )
 
 func main() {
-	title := os.Args[1]
-	message := os.Args[2]
+	var title string
+	flag.StringVar(&title, "title", "tinynotify", "title of notification")
+	flag.Parse()
+	message := strings.Join(flag.Args(), "\n\n")
+
 	if err := run(title, message); err != nil {
 		log.Fatalf("!! %+v", err)
 	}
